@@ -38,8 +38,10 @@ def main(argv):
     in_last = argv[2]
     for _, (index, name) in df.iterrows():
         first, last = name.split(" ")
+        if "*" not in first and "*" not in last:
+            continue
         if first[0] == in_first[0] and last[0] == in_last[0] and len(first) == len(in_first) and len(last) == len(in_last):
-            print(f"Found {first} {last} at {index}")
+            print(f"Found {in_first} {in_last} at {index}")
             return
 
     print("Not Found")
